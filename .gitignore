@@ -1,0 +1,10 @@
+# settings
+venv/
+
+# data
+data/
+DSCI560_Syllabus.pdf
+*.csv
+
+# API keys
+kaggle_api_key.json
