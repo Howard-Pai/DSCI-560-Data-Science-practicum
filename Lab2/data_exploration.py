@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import pdfplumber
 from kaggle.api.kaggle_api_extended import KaggleApi
 import zipfile
+import argparse
 
 
 # -----------------------------------
@@ -117,6 +118,24 @@ def collect_pdf_text():
     return extracted_text
 
 if __name__ == "__main__":
-    collect_csv_data()
-    collect_web_text()
-    collect_pdf_text()
+    parser = argparse.ArgumentParser(description="Data collection script")
+    parser.add_argument(
+        "--task",
+        choices=["csv", "web", "pdf", "all"],
+        default="all",
+        help="Select the type of data to collect"
+    )
+
+    args = parser.parse_args()
+
+    if args.task == "csv":
+        collect_csv_data()
+    elif args.task == "web":
+        collect_web_text()
+    elif args.task == "pdf":
+        collect_pdf_text()
+    elif args.task == "all":
+        collect_csv_data()
+        collect_web_text()
+        collect_pdf_text()
+

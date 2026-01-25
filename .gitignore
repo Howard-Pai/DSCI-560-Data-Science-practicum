@@ -5,6 +5,8 @@ venv/
 data/
 DSCI560_Syllabus.pdf
 *.csv
+*.pages
+*_report.pdf
 
 # API keys
 kaggle_api_key.json
