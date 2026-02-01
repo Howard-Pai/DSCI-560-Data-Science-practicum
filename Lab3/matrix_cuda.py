@@ -13,13 +13,18 @@ lib.gpu_matrix_multiply.argtypes = [
     ctypes.c_int 
 ] 
  
-N = 1024 
-A = np.random.rand(N, N).astype(np.float32) 
-B = np.random.rand(N, N).astype(np.float32) 
-C = np.zeros((N, N), dtype=np.float32) 
+result = []
+result.append("# N runtime_seconds\n")
+for N in [128, 256, 512, 1024, 2048]:
+    A = np.random.rand(N, N).astype(np.float32) 
+    B = np.random.rand(N, N).astype(np.float32) 
+    C = np.zeros((N, N), dtype=np.float32) 
  
-start = time.time() 
-lib.gpu_matrix_multiply(A.ravel(), B.ravel(), C.ravel(), N) 
-end = time.time() 
+    start = time.time() 
+    lib.gpu_matrix_multiply(A.ravel(), B.ravel(), C.ravel(), N) 
+    end = time.time() 
  
-print(f"Python call to CUDA library completed in {end - start:.4f} seconds")
+    result.append(f"{N} {end - start}\n")
+
+with open("runtime_python_cudaLibrary.txt", "w") as f:
+    f.writelines(result)

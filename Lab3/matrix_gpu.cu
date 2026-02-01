@@ -55,6 +55,11 @@ int main(int argc, char **argv){
 
     printf("%d %f\n", N, milliseconds/ 1000.0f);
 
+    volatile float sink = 0.0f;
+    for (int i = 0; i < N * N; i++) {
+        sink += C[i];
+    }
+
     cudaFree(A);
     cudaFree(B);
     cudaFree(C);

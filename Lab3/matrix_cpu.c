@@ -36,6 +36,12 @@ int main(int argc, char **argv) {
  
     double elapsed = (double)(end - start) / CLOCKS_PER_SEC; 
     printf("%d %f\n", N, elapsed);
+
+    // Volatile to prevent optimization (gvc -02) removing the loop
+    volatile float sink = 0.0f;
+    for (int i = 0; i < N * N; i++) {
+        sink += C[i];
+    }
  
     free(A); free(B); free(C); // free the allocated memory
     return 0; 

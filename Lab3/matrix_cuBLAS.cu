@@ -57,6 +57,13 @@ int main(int argc, char **argv) {
 
     printf("%d %f\n", N, ms / 1000.0f);
 
+    cudaMemcpy(h_C, d_C, size, cudaMemcpyDeviceToHost);
+
+    volatile float sink = 0.0f;
+    for (int i = 0; i < N * N; i++) {
+        sink += h_C[i];
+    }
+
     cublasDestroy(handle);
     cudaFree(d_A);
     cudaFree(d_B);
