@@ -79,7 +79,7 @@ for INPUT_IMAGE in "$ORIGINAL_DIR"/*.png "$ORIGINAL_DIR"/*.PNG "$ORIGINAL_DIR"/*
     
     # Process with error handling for individual images
     if python3 image_processing.py "$INPUT_IMAGE" "$RAW_FILE" && \
-       ./convolution "$RAW_FILE" "$OUTPUT_RAW" "$KERNEL_TYPE" && \
+       ./convolution_c "$RAW_FILE" "$OUTPUT_RAW" "$KERNEL_TYPE" && \
        python3 visualize_raw_file.py "$OUTPUT_RAW" "$RESULT_IMAGE"; then
         echo "✓ Success: $RESULT_IMAGE"
         PROCESSED_COUNT=$((PROCESSED_COUNT + 1))
