@@ -14,7 +14,7 @@ The project also includes **automation scripts** to run each version and measure
 ---
 
 ## Directory Structure
-
+<pre>
 matrix_multiplication/
 ├─ matrix_cpu.c
 ├─ matrix_gpu.cu
@@ -26,6 +26,8 @@ matrix_multiplication/
 ├─ run_cuBLAS.sh
 ...
 └─ runtime_comparison.png
+</pre>
+
 
 ## Usage
 
