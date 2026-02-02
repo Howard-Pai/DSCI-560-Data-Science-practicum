@@ -8,6 +8,7 @@ from Python for flexible experimentation and performance comparison.
 
 ## Directory Structure
 
+<pre>
 convolution/
 ├── Image_original/         Original reference images
 ├── Image_raw/              Raw image data used for convolution
@@ -23,6 +24,9 @@ convolution/
 ├── run_cuda.sh             Run CUDA convolution pipeline
 ├── run_cuda_lib.sh         Run CUDA via shared library
 └── __pycache__/            Python cache files
+</pre>
+
+
 
 ---
 
@@ -42,13 +46,21 @@ pip install numpy pillow
 ## Build Instructions
 
 ### Compile CPU Version
+<pre><code class="bash">
 gcc convolution.c -o convolution_c -O2
+</code></pre>
+
 
 ### Compile CUDA Standalone Version
+<pre><code class="bash">
 nvcc convolution.cu -o convolution_cuda
+</code></pre>
 
 ### Compile CUDA Shared Library
+<pre><code class="bash">
 nvcc -Xcompiler -fPIC -shared convolution_cuda_lib.cu -o libconv_cuda.so
+</code></pre>
+
 
 ---
 
@@ -112,4 +124,4 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(pwd)
 
 ## Author
 
-Howard-Pai
+ChihYun Pai
